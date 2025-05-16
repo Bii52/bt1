@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Chi Tiết Sản Phẩm</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Sản phẩm</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <div class="product-detail">
+        <img id="productImage" src="" alt="Product Image">
+        <h2 id="productName">Tên Sản Phẩm</h2>
+        <p id="productDescription">Mô tả chi tiết sản phẩm</p>
+        <p id="productPrice">Giá: $0</p>
+        <button onclick="window.history.back();">Quay lại</button>
+    </div>
+
+    <script>
+        // Giả sử rằng chúng ta có các thông tin sản phẩm dưới đây:
+        const products = [
+            {
+                id: 1,
+                name: "Giày K 1",
+                description: "Mô tả chi tiết Giày K 1.",
+                price: 100,
+                image: "https://bizweb.dktcdn.net/thumb/large/100/449/458/products/anh-ghep-logo-web-61addcfc-d08e-43e2-b622-0b7dbff9681f.png?v=1747129623177"
+            },
+            {
+                id: 2,
+                name: "Giày K 2",
+                description: "Mô tả chi tiết Giày K 2.",
+                price: 150,
+                image: "https://bizweb.dktcdn.net/thumb/large/100/449/458/products/anh-ghep-logo-web-21bd1ce7-29a4-4efc-888e-052f8b0b9eca.png?v=1747304677647"
+            },
+            {
+                id: 3,
+                name: "Giày K 3",
+                description: "Mô tả chi tiết Giày K 3.",
+                price: 120,
+                image: "https://bizweb.dktcdn.net/thumb/large/100/449/458/products/anh-ghep-logo-web-16c3fc87-2cb2-420e-beb0-59c18136d939.png?v=1747128574450"
+            },
+
+            {
+                id: 4,
+                name: "Giày K 4",
+                description: "Mô tả chi tiết Giày K 4.",
+                price: 80,
+                image: "https://bizweb.dktcdn.net/thumb/large/100/449/458/products/anh-ghep-logo-web-7-22b8e5b3-9199-4fb3-8959-9a731199c56b.png?v=1740471467383"
+            },
+
+
+            {
+                id: 5,
+                name: "Giày K 5",
+                description: "Mô tả chi tiết Giày K 5.",
+                price: 200,
+                image: "https://bizweb.dktcdn.net/thumb/large/100/449/458/products/anh-ghep-logo-web-26-794150d8-391d-425d-ad8a-f85edacdc339.png?v=1735878677023"
+            },
+
+
+            {
+                id: 6,
+                name: "Giày K 6",
+                description: "Mô tả chi tiết Giày K 6.",
+                price: 52,
+                image: "https://bizweb.dktcdn.net/thumb/large/100/449/458/products/anh-ghep-logo-web-24-2b699420-16b2-495e-80fb-2e6dbc799a95.png?v=1734152970347"
+            }
+            
+        ];
+
+        // Lấy id sản phẩm từ URL (sử dụng URLSearchParams để trích xuất tham số "id")
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id'));
+
+        // Tìm sản phẩm từ id trong danh sách sản phẩm
+        const product = products.find(p => p.id === productId);
+
+        // Hiển thị thông tin sản phẩm
+        if (product) {
+            document.getElementById('productImage').src = product.image;
+            document.getElementById('productName').innerText = product.name;
+            document.getElementById('productDescription').innerText = product.description;
+            document.getElementById('productPrice').innerText = `Giá: $${product.price}`;
+        } else {
+            alert("Sản phẩm không tồn tại!");
+        }
+    </script>
+
+</body>
+</html>
